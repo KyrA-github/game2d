@@ -238,12 +238,22 @@ int main()
 			{
 				if (Tilemap[i][j] != 0) 
 				{
+					bool tile_bool = true;
 					int tile_x = 16;
 					int tile_y = 16;
 					int tilenumder = Tilemap[i][j];
-
-
-
+					tile_x = tilenumder * tile_x;
+					while (true)
+					{
+						if (tile_x > 528) {
+						tile_x = tile_x - 528;
+						tile_y = tile_y + 16;
+						}
+						else
+						{
+							tile_bool = false;
+						}
+					}
 					gameMap.sprite.setTextureRect(IntRect(0, 0, tile, tile));
 				}
 				gameMap.sprite.setPosition(j * tile - offsetX, i * tile - offsetY);

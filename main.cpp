@@ -90,17 +90,12 @@ public:
 		for (int i = rect.top / tile; i < (rect.top + rect.height) / tile; i++)
 			for (int j = rect.left / tile; j < (rect.left + rect.width) / tile; j++)
 			{
-				if (Tilemap[i][j] == 202)
+				if (Tilemap[i][j] != 0)
 				{
 					if ((dx > 0) && (dir == 0)) rect.left = j * tile - rect.width;
 					if ((dx < 0) && (dir == 0)) rect.left = j * tile + tile;
 					if ((dy > 0) && (dir == 1)) { rect.top = i * tile - rect.height;  dy = 0;   onGround = true; }
 					if ((dy < 0) && (dir == 1)) { rect.top = i * tile + tile;   dy = 0; }
-				}
-
-				if (Tilemap[i][j] == 1)
-				{
-					Tilemap[i][j] = 0;
 				}
 
 			}
@@ -184,7 +179,7 @@ int main()
 
 	Texture skin1, textur_map;
 	skin1.loadFromFile("data_game/img/players_skin/skin_1/Walk.png");
-	textur_map.loadFromFile("data_game/map/textur_map/set1.png");
+	textur_map.loadFromFile("data_game/map/texture_map/set1.png");
 
 	float currentFrame = 0;
 
@@ -194,6 +189,12 @@ int main()
 	Clock clock;
 
 	RectangleShape rectangle(Vector2f(tile, tile));
+
+	bool tile_bool;
+	int tile_x;
+	int tile_y;
+	int tilenumder;
+
 
 	while (window.isOpen())
 	{
@@ -238,26 +239,28 @@ int main()
 			{
 				if (Tilemap[i][j] != 0) 
 				{
-					bool tile_bool = true;
-					int tile_x = 16;
-					int tile_y = 16;
-					int tilenumder = Tilemap[i][j];
+					tile_bool = true;
+					tile_x = 16;
+					tile_y = 16;
+					tilenumder = Tilemap[i][j];
 					tile_x = tilenumder * tile_x;
-					while (true)
+					while (tile_bool)
 					{
-						if (tile_x > 528) {
-						tile_x = tile_x - 528;
-						tile_y = tile_y + 16;
+						if (tile_x > 528) 
+						{
+							tile_x = tile_x - 528;
+							tile_y = tile_y + 16;
 						}
 						else
 						{
 							tile_bool = false;
 						}
 					}
-					gameMap.sprite.setTextureRect(IntRect(0, 0, tile, tile));
+					gameMap.sprite.setTextureRect(IntRect(tile_x - 16, tile_y - 16, tile, tile));
+					gameMap.sprite.setPosition(j * tile - offsetX, i * tile - offsetY);
+					window.draw(gameMap.sprite);
 				}
-				gameMap.sprite.setPosition(j * tile - offsetX, i * tile - offsetY);
-				window.draw(gameMap.sprite);
+				
 			}
 		window.draw(p.sprite);
 		window.display();

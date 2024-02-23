@@ -7,16 +7,15 @@
 
 using namespace sf;
 
-
 float offsetX = 0, offsetY = 0;
 
 const int tile = 16;
 
-
 const int matrix_h = 65;
 const int matrix_w = 100;
 
-int Tilemap[matrix_h][matrix_w];
+int groundLayer[matrix_h][matrix_w];
+int treeLayer[matrix_h][matrix_w];
 
 
 class PLAYER {
@@ -90,7 +89,7 @@ public:
 		for (int i = rect.top / tile; i < (rect.top + rect.height) / tile; i++)
 			for (int j = rect.left / tile; j < (rect.left + rect.width) / tile; j++)
 			{
-				if (Tilemap[i][j] != 0)
+				if (groundLayer[i][j] != 0)
 				{
 					if ((dx > 0) && (dir == 0)) rect.left = j * tile - rect.width;
 					if ((dx < 0) && (dir == 0)) rect.left = j * tile + tile;
@@ -107,9 +106,10 @@ class Map
 {
 public:
 	Sprite sprite;
-	int groundLayer[matrix_h][matrix_w];
-	int treeLayer[matrix_h][matrix_w];
-
+	bool tile_bool;
+	int tile_x;
+	int tile_y;
+	int tilenumder;
 	void map_sprite(Texture& image)
 	{
 		sprite.setTexture(image);
@@ -132,7 +132,7 @@ public:
 
 				for (int j = 0; j < matrix_w; j++)
 				{
-					Tilemap[i][j] = groundData[i * matrix_w + j];
+					groundLayer[i][j] = groundData[i * matrix_w + j];
 					treeLayer[i][j] = treeData[i * matrix_w + j];
 				}
 			}
@@ -143,7 +143,7 @@ public:
 		}
 	}
 
-	void draw()
+	void draw(RenderWindow &window)
 	{
 		for (int i = 0; i < matrix_h; i++)
 		{
@@ -152,16 +152,34 @@ public:
 				int groundTile = groundLayer[i][j];
 				int treeTile = treeLayer[i][j];
 
-				// ќтрисовка плитки земли (ground)
 				if (groundTile != 0)
 				{
-					// ... ваш код отрисовки земли ...
+					tile_bool = true;
+					tile_x = 16;
+					tile_y = 16;
+					tilenumder = groundLayer[i][j];
+					tile_x = tilenumder * tile_x;
+					while (tile_bool)
+					{
+						if (tile_x > 528)
+						{
+							tile_x = tile_x - 528;
+							tile_y = tile_y + 16;
+						}
+						else
+						{
+							tile_bool = false;
+						}
+					}
+					sprite.setTextureRect(IntRect(tile_x - 16, tile_y - 16, tile, tile));
+					sprite.setPosition(j * tile - offsetX, i * tile - offsetY);
+					window.draw(sprite);
+					
 				}
 
-				// ќтрисовка плитки дерева (tree)
 				if (treeTile != 0)
 				{
-					// ... ваш код отрисовки дерева ...
+
 				}
 			}
 		}
@@ -190,10 +208,7 @@ int main()
 
 	RectangleShape rectangle(Vector2f(tile, tile));
 
-	bool tile_bool;
-	int tile_x;
-	int tile_y;
-	int tilenumder;
+	
 
 
 	while (window.isOpen())
@@ -234,34 +249,9 @@ int main()
 		offsetY = p.rect.top - 200;
 
 		window.clear(Color::White);
-		for (int i = 0; i < matrix_h; i++)
-			for (int j = 0; j < matrix_w; j++)
-			{
-				if (Tilemap[i][j] != 0) 
-				{
-					tile_bool = true;
-					tile_x = 16;
-					tile_y = 16;
-					tilenumder = Tilemap[i][j];
-					tile_x = tilenumder * tile_x;
-					while (tile_bool)
-					{
-						if (tile_x > 528) 
-						{
-							tile_x = tile_x - 528;
-							tile_y = tile_y + 16;
-						}
-						else
-						{
-							tile_bool = false;
-						}
-					}
-					gameMap.sprite.setTextureRect(IntRect(tile_x - 16, tile_y - 16, tile, tile));
-					gameMap.sprite.setPosition(j * tile - offsetX, i * tile - offsetY);
-					window.draw(gameMap.sprite);
-				}
-				
-			}
+
+		gameMap.draw(window);
+
 		window.draw(p.sprite);
 		window.display();
 	}

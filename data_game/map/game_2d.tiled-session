@@ -9,7 +9,7 @@
     ],
     "fileStates": {
         "1.tsx": {
-            "scaleInDock": 5.5,
+            "scaleInDock": 3,
             "scaleInEditor": 1
         },
         "map.json": {
@@ -21,7 +21,11 @@
             }
         },
         "set1.tsx": {
-            "scaleInDock": 5.5,
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "set2.tsx": {
+            "scaleInDock": 3,
             "scaleInEditor": 1
         }
     },
@@ -39,8 +43,9 @@
     ],
     "project": "game_2d.tiled-project",
     "recentFiles": [
-        "set1.tsx",
         "1.tsx",
+        "set1.tsx",
+        "set2.tsx",
         "map.json"
     ],
     "tileset.lastUsedFormat": "tsx",

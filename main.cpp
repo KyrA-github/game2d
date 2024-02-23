@@ -127,8 +127,8 @@ public:
 			auto layers = objJson["layers"];
 			for (int i = 0; i < matrix_h; i++)
 			{
-				auto groundData = layers[0]["data"];
-				auto treeData = layers[1]["data"];
+				auto groundData = layers[1]["data"];
+				auto treeData = layers[0]["data"];
 
 				for (int j = 0; j < matrix_w; j++)
 				{
@@ -161,9 +161,9 @@ public:
 					tile_x = tilenumder * tile_x;
 					while (tile_bool)
 					{
-						if (tile_x > 528)
+						if (tile_x > 96)
 						{
-							tile_x = tile_x - 528;
+							tile_x = tile_x - 96;
 							tile_y = tile_y + 16;
 						}
 						else
@@ -179,7 +179,26 @@ public:
 
 				if (treeTile != 0)
 				{
-
+					tile_bool = true;
+					tile_x = 16;
+					tile_y = 16;
+					tilenumder = treeLayer[i][j];
+					tile_x = tilenumder * tile_x;
+					while (tile_bool)
+					{
+						if (tile_x > 96)
+						{
+							tile_x = tile_x - 96;
+							tile_y = tile_y + 16;
+						}
+						else
+						{
+							tile_bool = false;
+						}
+					}
+					sprite.setTextureRect(IntRect(tile_x - 16, tile_y - 16, tile, tile));
+					sprite.setPosition(j * tile - offsetX, i * tile - offsetY);
+					window.draw(sprite);
 				}
 			}
 		}
@@ -197,7 +216,7 @@ int main()
 
 	Texture skin1, textur_map;
 	skin1.loadFromFile("data_game/img/players_skin/skin_1/Walk.png");
-	textur_map.loadFromFile("data_game/map/texture_map/set1.png");
+	textur_map.loadFromFile("data_game/map/texture_map/set3.png");
 
 	float currentFrame = 0;
 

@@ -27,14 +27,16 @@ public:
 	bool onGround;
 	Sprite sprite;
 	float currentFrame;
-	int player_textur_w = 50;
-	int player_textur_h = 70;
-	bool animation_on_off = true;
+	int player_textur_w = 32;
+	int player_textur_h = 32;
+	bool last_right = false;
+	bool last_left = true;
+
 
 	PLAYER(Texture& image)
 	{
 		sprite.setTexture(image);
-		rect = FloatRect(7 * 32, 9 * 32, 50, 69);
+		rect = FloatRect(7 * 32, 9 * 32, 32, 32);
 
 		dx = dy = 0.1;
 		currentFrame = 0;
@@ -43,7 +45,7 @@ public:
 
 	void update(float time)
 	{
-		
+
 
 		rect.left += dx * time;
 		Collision(0);
@@ -54,32 +56,40 @@ public:
 		Collision(1);
 
 
-		if (animation_on_off) {
+
+		if (dy > 0.0003 && dx > 0)
+		{
+			currentFrame += 0.01 * time;
+			if (currentFrame > 1) currentFrame -= 1;
+			sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame), 128, player_textur_w, player_textur_h));
 			
 		}
+		else if (dy > 0.0003 && dx < 0)
+		{
+			currentFrame += 0.01 * time;
+			if (currentFrame > 1) currentFrame -= 1;
+			sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame) + player_textur_w, 128, -player_textur_w, player_textur_h));
+		}
+		else if (dx < 0)
+		{
+			currentFrame += 0.01 * time;
+			if (currentFrame > 12) currentFrame -= 12;
+			sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame) + player_textur_w, 0, -player_textur_w, player_textur_h));
+		}
+		else if (dx > 0)
+		{
+			currentFrame += 0.01 * time;
+			if (currentFrame > 12) currentFrame -= 12;
+			sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame), 0, player_textur_w, player_textur_h));
+		}
+		else
+		{
+			currentFrame += 0.01 * time;
+			if (currentFrame > 11) currentFrame -= 11;
+			sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame), 32, player_textur_w, player_textur_h));
+		}
 
-		if (dx > 0) 
-		{
-			animation_on_off = false;
-			currentFrame += 0.005 * time;
-			if (currentFrame > 7) currentFrame -= 7;
-			sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame), 60, player_textur_w, player_textur_h));
-		}
-		else
-		{
-			animation_on_off = true;
-		}
-		if (dx < 0)
-		{ 
-			animation_on_off = false;
-			currentFrame += 0.005 * time;
-			if (currentFrame > 7) currentFrame -= 7;
-			sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame) + player_textur_w, 60, -player_textur_w, player_textur_h));
-		}
-		else
-		{
-			animation_on_off = true;
-		}
+
 		sprite.setPosition(rect.left - offsetX, rect.top - offsetY);
 		dx = 0;
 	}
@@ -143,7 +153,7 @@ public:
 		}
 	}
 
-	void draw(RenderWindow &window)
+	void draw(RenderWindow& window)
 	{
 		for (int i = 0; i < matrix_h; i++)
 		{
@@ -174,7 +184,7 @@ public:
 					sprite.setTextureRect(IntRect(tile_x - 16, tile_y - 16, tile, tile));
 					sprite.setPosition(j * tile - offsetX, i * tile - offsetY);
 					window.draw(sprite);
-					
+
 				}
 
 				if (treeTile != 0)
@@ -215,7 +225,7 @@ int main()
 	RenderWindow window(VideoMode(600, 400), "Test!");
 
 	Texture skin1, textur_map;
-	skin1.loadFromFile("data_game/img/players_skin/skin_1/Walk.png");
+	skin1.loadFromFile("data_game/img/players_skin/s1/gab.png");
 	textur_map.loadFromFile("data_game/map/texture_map/set3.png");
 
 	float currentFrame = 0;
@@ -227,7 +237,7 @@ int main()
 
 	RectangleShape rectangle(Vector2f(tile, tile));
 
-	
+
 
 
 	while (window.isOpen())
@@ -277,4 +287,3 @@ int main()
 
 	return 0;
 }
-

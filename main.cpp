@@ -29,8 +29,7 @@ public:
 	float currentFrame;
 	int player_textur_w = 32;
 	int player_textur_h = 32;
-	bool last_right = false;
-	bool last_left = true;
+	bool last_viewed = false;
 
 
 	PLAYER(Texture& image)
@@ -57,18 +56,21 @@ public:
 
 
 
-		if (dy > 0.0003 && dx > 0)
+		if (dy > 0.0003)
 		{
-			currentFrame += 0.01 * time;
-			if (currentFrame > 1) currentFrame -= 1;
-			sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame), 128, player_textur_w, player_textur_h));
+			if (last_viewed) {
+				currentFrame += 0.01 * time;
+				if (currentFrame > 1) currentFrame -= 1;
+				sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame), 128, player_textur_w, player_textur_h));
+				
+			}
+			else {
+				currentFrame += 0.01 * time;
+				if (currentFrame > 1) currentFrame -= 1;
+				sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame) + player_textur_w, 128, -player_textur_w, player_textur_h));	
+			}
 			
-		}
-		else if (dy > 0.0003 && dx < 0)
-		{
-			currentFrame += 0.01 * time;
-			if (currentFrame > 1) currentFrame -= 1;
-			sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame) + player_textur_w, 128, -player_textur_w, player_textur_h));
+			
 		}
 		else if (dx < 0)
 		{
@@ -84,9 +86,19 @@ public:
 		}
 		else
 		{
-			currentFrame += 0.01 * time;
-			if (currentFrame > 11) currentFrame -= 11;
-			sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame), 32, player_textur_w, player_textur_h));
+			if (last_viewed) {
+				currentFrame += 0.01 * time;
+				if (currentFrame > 11) currentFrame -= 11;
+				sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame), 32, player_textur_w, player_textur_h));
+		
+			}
+			else
+			{
+				currentFrame += 0.01 * time;
+				if (currentFrame > 11) currentFrame -= 11;
+				sprite.setTextureRect(IntRect(player_textur_w * int(currentFrame) + player_textur_w, 32, -player_textur_w, player_textur_h));
+
+			}
 		}
 
 
@@ -222,7 +234,7 @@ int main()
 	Map gameMap;
 	gameMap.read_file();
 
-	RenderWindow window(VideoMode(600, 400), "Test!");
+	RenderWindow window(VideoMode(600, 400), "Game2d");
 
 	Texture skin1, textur_map;
 	skin1.loadFromFile("data_game/img/players_skin/s1/gab.png");
@@ -259,12 +271,13 @@ int main()
 		if (Keyboard::isKeyPressed(Keyboard::A))
 		{
 			p.dx = -0.08;
-
+			p.last_viewed = false;
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::D))
 		{
 			p.dx = 0.08;
+			p.last_viewed = true;
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::W))

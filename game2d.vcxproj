@@ -133,11 +133,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="loading_map.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="map.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Player_game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data_game\map\map.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="global.h" />
+    <ClInclude Include="loading_map.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Player_game.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

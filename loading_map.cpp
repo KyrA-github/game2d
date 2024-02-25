@@ -52,9 +52,9 @@ void loading_map::draw(RenderWindow& window)
 				tile_x = tilenumder * tile_x;
 				while (tile_bool)
 				{
-					if (tile_x > 96)
+					if (tile_x > 352)
 					{
-						tile_x = tile_x - 96;
+						tile_x = tile_x - 352;
 						tile_y = tile_y + 16;
 					}
 					else
@@ -77,9 +77,9 @@ void loading_map::draw(RenderWindow& window)
 				tile_x = tilenumder * tile_x;
 				while (tile_bool)
 				{
-					if (tile_x > 96)
+					if (tile_x > 352)
 					{
-						tile_x = tile_x - 96;
+						tile_x = tile_x - 352;
 						tile_y = tile_y + 16;
 					}
 					else

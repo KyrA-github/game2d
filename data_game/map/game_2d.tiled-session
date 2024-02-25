@@ -13,11 +13,11 @@
             "scaleInEditor": 1
         },
         "map.json": {
-            "scale": 3,
-            "selectedLayer": 0,
+            "scale": 2,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 217.99999999999997,
-                "y": 952.3333333333333
+                "x": 57.75,
+                "y": 1144.5
             }
         },
         "set1.tsx": {
@@ -31,6 +31,10 @@
         "set3.tsx": {
             "scaleInDock": 3,
             "scaleInEditor": 1
+        },
+        "texture.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
     "last.imagePath": "E:/C_Projects_VS/game2d/data_game/map/texture_map",
@@ -42,12 +46,13 @@
     "map.width": 100,
     "openFiles": [
         "map.json",
-        "set3.tsx"
+        "texture.tsx"
     ],
     "project": "game_2d.tiled-project",
     "recentFiles": [
-        "set3.tsx",
+        "texture.tsx",
         "map.json",
+        "set3.tsx",
         "1.tsx",
         "set1.tsx",
         "set2.tsx"

@@ -1,5 +1,6 @@
 #pragma once
 extern int tile;
+extern int current_scene;
 
 extern int matrix_h, matrix_w;
 

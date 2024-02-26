@@ -20,10 +20,10 @@ int current_scene = 1;
 
 int main()
 {
-	Texture skin1, textur_map, menu_background;
+	Texture skin1, textur_map, menu_background, menu_button_play;
 	skin1.loadFromFile("data_game/img/players_skin/s1/gab.png");
 	textur_map.loadFromFile("data_game/map/texture_map/texture.png");
-	menu_background.loadFromFile("data_game/img/menu/background1366-768.png");
+	menu_background.loadFromFile("data_game/img/menu/background/background1366-768.png");
 
 	
 	
@@ -52,6 +52,7 @@ int main()
 			if (event.type == Event::Closed)
 				window.close();
 		}
+		//game
 		if (current_scene == 2) {
 			if (Keyboard::isKeyPressed(Keyboard::A))
 			{
@@ -81,9 +82,14 @@ int main()
 
 			window.draw(p.sprite);
 		}
+		//menu
 		else if (current_scene == 1) {
 			menu_game_main.menu(window);
-			//nu_game_main.draw_menu(window);
+		}
+		//levels
+		else if (current_scene == 3) {
+			menu_game_main.menu(window);
+			
 		}
 		window.display();
 	}

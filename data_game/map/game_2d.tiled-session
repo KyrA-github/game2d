@@ -13,11 +13,11 @@
             "scaleInEditor": 1
         },
         "map.json": {
-            "scale": 2,
+            "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 57.75,
-                "y": 1144.5
+                "x": 419.69696969696975,
+                "y": 524.2424242424241
             }
         },
         "set1.tsx": {

@@ -85,6 +85,7 @@ int main()
 		//menu
 		else if (current_scene == 1) {
 			menu_game_main.menu(window);
+			menu_game_main.draw_menu(window);
 		}
 		//levels
 		else if (current_scene == 3) {

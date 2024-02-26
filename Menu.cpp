@@ -22,7 +22,7 @@ void Menu::menu(RenderWindow& window)
     Vector2i mousePosition = Mouse::getPosition(window);
 
 
-    // Проверка нажатия на кнопку Play
+    
     
 
     //window.draw(background_sprite);

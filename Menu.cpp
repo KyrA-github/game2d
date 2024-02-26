@@ -6,7 +6,11 @@ Menu::Menu(Texture& background_img)
 	rect_play = FloatRect(0,0, 80, 21);
     if (!font.loadFromFile("data_game/font/text3.otf")) 
     {
-        std::cout << 4;
+        std::cout << "ERROR FONT";
+    }
+    if (!font_info.loadFromFile("data_game/font/text2.ttf"))
+    {
+        std::cout << "ERROR FONT";
     }
 }
 
@@ -39,6 +43,14 @@ void Menu::menu(RenderWindow& window)
     MainMenu[3].setCharacterSize(20);
     MainMenu[3].setPosition(100, 650);
 
+    MainMenu[4].setFont(font_info);
+    MainMenu[4].setFillColor(Color::White);
+    MainMenu[4].setString(version);
+    MainMenu[4].setCharacterSize(20);
+    MainMenu[4].setPosition(0, 745);
+
+
+
     control(window);
     
     switch (menu_v)
@@ -58,7 +70,32 @@ void Menu::menu(RenderWindow& window)
     default:
         break;
     }
+    draw_menu(window);
+}
 
+void Menu::info(RenderWindow& window)
+{
+    MainMenu_info[0].setFont(font_info);
+    MainMenu_info[0].setFillColor(Color::Black);
+    MainMenu_info[0].setString("The game is written in C++\nwith the sfml library without an engine");
+    MainMenu_info[0].setCharacterSize(50);
+    MainMenu_info[0].setPosition(100, 500);
+
+    MainMenu_info[1].setFont(font_info);
+    MainMenu_info[1].setFillColor(Color::Black);
+    MainMenu_info[1].setString("It is an open source project\n can be downloaded on the author’s github\nhttps://github.com/KyrA-github/game2d");
+    MainMenu_info[1].setCharacterSize(50);
+    MainMenu_info[1].setPosition(550, 100);
+
+    MainMenu_info[2].setFont(font);
+    MainMenu_info[2].setFillColor(Color::White);
+    MainMenu_info[2].setString("Back");
+    MainMenu_info[2].setCharacterSize(20);
+    MainMenu_info[2].setPosition(100, 650);
+    
+
+    control(window);
+    draw_menu_info(window);
 }
 
 void Menu::levels(RenderWindow& window)
@@ -97,8 +134,12 @@ void Menu::draw_menu(RenderWindow& window)
     }
 }
 
-void Menu::draw_menu_index(RenderWindow& window)
+void Menu::draw_menu_info(RenderWindow& window)
 {
+    window.draw(background_sprite);
+    for (int i = 0; i < max_text_info; i++) {
+        window.draw(MainMenu_info[i]);
+    }
 }
 
 void Menu::control(RenderWindow& window)
@@ -106,33 +147,75 @@ void Menu::control(RenderWindow& window)
     if (Keyboard::isKeyPressed(Keyboard::W) && press_button_w)
     {
         press_button_w = false;
-        if (menu_v != 1) {
-            menu_v--;
-        }
-        else
+        if (current_scene == 1) 
         {
-            menu_v = 4;
-        }
+            if (menu_v != 1) {
+                menu_v--;
+            }
+            else
+            {
+                menu_v = 4;
+            }
+        }  
     }
     else if (!Keyboard::isKeyPressed(Keyboard::W))
     {
         press_button_w = true;
     }
 
-    if (Keyboard::isKeyPressed(Keyboard::S) && press_button_s**)
+    if (Keyboard::isKeyPressed(Keyboard::S) && press_button_s)
     {
-        std::cout << 5;
         press_button_s = false;
-        if (menu_v != 4) {
+        if (current_scene == 1)
+        { 
+            if (menu_v != 4) 
+            {
             menu_v++;
+            }
+            else
+            {
+                menu_v = 1;
+            }
         }
-        else
-        {
-            menu_v = 1;
-        }
+       
     }else if (!Keyboard::isKeyPressed(Keyboard::S)){
-        std::cout << 6;
         press_button_s = true;
+    }
+
+    if (Keyboard::isKeyPressed(Keyboard::Enter) && press_button_enter)
+    {
+        press_button_enter = false;
+        switch (current_scene)
+        {
+        case 1:
+            switch (menu_v)
+            {
+            case 1:
+                current_scene = 2;
+                break;
+            case 2:
+                current_scene = 3;
+                break;
+            case 3:
+                break;
+            case 4:
+                current_scene = 4;
+                break;
+            default:
+                break;
+            }
+            break;
+        case 2:
+            break;
+        case 3:
+            current_scene = 1;
+            break;
+        default:
+            break;
+        }  
+    }
+    else if (!Keyboard::isKeyPressed(Keyboard::Enter)) {
+        press_button_enter = true;
     }
     
 }

@@ -22,12 +22,6 @@ void Menu::menu(RenderWindow& window)
     Vector2i mousePosition = Mouse::getPosition(window);
 
 
-    
-    
-
-    //window.draw(background_sprite);
-    //window.draw(button_play);
-    //window.draw(MainMenu);
 }
 
 void Menu::levels(RenderWindow& window)

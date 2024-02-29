@@ -25,7 +25,7 @@ int main()
 	textur_map.loadFromFile("data_game/map/texture_map/texture.png");
 	menu_background.loadFromFile("data_game/img/menu/background/background1366-768.png");
 	
-	RenderWindow window(VideoMode(1366, 768), "Game2d");
+	RenderWindow window(VideoMode(1366, 768), "CRAZY FROG");
 
 	loading_map gameMap(textur_map);
 	Menu menu_game_main(menu_background);
@@ -76,7 +76,7 @@ int main()
 			p.update(time);
 
 			if (p.rect.left > 683) offsetX = p.rect.left - 683;
-			offsetY = p.rect.top - 459;
+			offsetY = p.rect.top - 659;
 				
 			window.clear(Color::White);
 

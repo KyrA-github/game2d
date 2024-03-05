@@ -4,6 +4,7 @@
 #include "Menu.h"
 #include "Player_game.h"
 #include "loading_map.h"
+#include "PLAYER.h"
 
 
 using namespace sf;
@@ -29,7 +30,7 @@ int main()
 
 	loading_map gameMap(textur_map);
 	Menu menu_game_main(menu_background);
-	Player_game p(skin1);
+	PLAYER player_1(skin1, 1, 1, 32 ,32);
 	Clock clock;
 	RectangleShape rectangle(Vector2f(tile, tile));
 
@@ -56,33 +57,13 @@ int main()
 		}
 		//game
 		else if (current_scene == 2) {
-			if (Keyboard::isKeyPressed(Keyboard::A))
-			{
-				p.dx = -0.08;
-				p.last_viewed = false;
-			}
+			player_1.control(time);
 
-			if (Keyboard::isKeyPressed(Keyboard::D))
-			{
-				p.dx = 0.08;
-				p.last_viewed = true;
-			}
-
-			if (Keyboard::isKeyPressed(Keyboard::W))
-			{
-				if (p.onGround) { p.dy = -0.35; p.onGround = false; }
-			}
-
-			p.update(time);
-
-			if (p.rect.left > 683) offsetX = p.rect.left - 683;
-			offsetY = p.rect.top - 659;
-				
 			window.clear(Color::White);
 
 			gameMap.draw(window);
 
-			window.draw(p.sprite);
+			window.draw(player_1.getSprite());
 		}
 		//info
 		else if (current_scene == 3) {

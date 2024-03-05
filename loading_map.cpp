@@ -11,7 +11,7 @@ void loading_map::read_file()
 	{
 		nlohmann::json objJson;
 		std::fstream fileInput;
-		fileInput.open("data_game/map/map.json");
+		fileInput.open("data_game/map/map_level_1.json");
 		fileInput >> objJson;
 		fileInput.close();
 

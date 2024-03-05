@@ -8,16 +8,27 @@
         "."
     ],
     "fileStates": {
+        "": {
+            "scaleInDock": 3
+        },
         "1.tsx": {
             "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "Idle.tsx": {
+            "scaleInDock": 23,
+            "scaleInEditor": 1
+        },
+        "Idlef.tsx": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "map.json": {
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 228.33333333333331,
-                "y": 782.6666666666666
+                "x": 253.66666666666669,
+                "y": 787.3333333333333
             }
         },
         "set1.tsx": {
@@ -37,19 +48,21 @@
             "scaleInEditor": 1
         }
     },
-    "last.imagePath": "E:/C_Projects_VS/game2d/data_game/map/texture_map",
-    "map.height": 65,
+    "last.imagePath": "E:/C_Projects_VS/game2d/data_game/img/sks/Traps/Spikes",
+    "map.height": 40,
     "map.lastUsedFormat": "json",
     "map.renderOrder": null,
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 100,
+    "map.width": 64,
     "openFiles": [
         "map.json",
         "texture.tsx"
     ],
     "project": "game_2d.tiled-project",
     "recentFiles": [
+        "Idle.tsx",
+        "Idlef.tsx",
         "texture.tsx",
         "map.json",
         "set3.tsx",

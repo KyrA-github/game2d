@@ -19,5 +19,7 @@ protected:
 	void info(Texture& image, float X, float Y, int W, int H);
 public:
 	Sprite getSprite() const;
+	FloatRect getrect() const;
+
 };
 

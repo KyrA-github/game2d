@@ -23,12 +23,24 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Idlevv.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
         "map.json": {
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 253.66666666666669,
                 "y": 787.3333333333333
+            }
+        },
+        "map_level_1.json": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 706.3333333333333,
+                "y": 488
             }
         },
         "set1.tsx": {
@@ -44,7 +56,7 @@
             "scaleInEditor": 1
         },
         "texture.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 3,
             "scaleInEditor": 1
         }
     },
@@ -57,14 +69,18 @@
     "map.width": 64,
     "openFiles": [
         "map.json",
-        "texture.tsx"
+        "texture.tsx",
+        "map_level_1.json",
+        "Idlevv.tsx"
     ],
     "project": "game_2d.tiled-project",
     "recentFiles": [
-        "Idle.tsx",
-        "Idlef.tsx",
+        "Idlevv.tsx",
+        "map_level_1.json",
         "texture.tsx",
         "map.json",
+        "Idle.tsx",
+        "Idlef.tsx",
         "set3.tsx",
         "1.tsx",
         "set1.tsx",

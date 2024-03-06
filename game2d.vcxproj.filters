@@ -36,6 +36,9 @@
     <ClCompile Include="PLAYER.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="consoll_game.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="data_game\map\map.json">
@@ -62,6 +65,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="PLAYER.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="consoll_game.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

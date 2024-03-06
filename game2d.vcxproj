@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="consoll_game.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="loading_map.cpp" />
@@ -145,6 +146,7 @@
     <None Include="data_game\map\map.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="consoll_game.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="global.h" />

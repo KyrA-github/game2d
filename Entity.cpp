@@ -19,3 +19,5 @@ Sprite Entity::getSprite() const
 {
 	return sprite; 
 }
+
+

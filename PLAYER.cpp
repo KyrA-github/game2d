@@ -1,7 +1,6 @@
 #include "PLAYER.h"
 
-
-PLAYER::PLAYER(Texture& image, float X, float Y, int W, int H)
+void PLAYER::info_class(Texture& image, float X, float Y, int W, int H)
 {
 	info(image, X, Y, W, H);
 
@@ -12,6 +11,8 @@ PLAYER::PLAYER(Texture& image, float X, float Y, int W, int H)
 
 void PLAYER::control(float time)
 {
+	dx_ = rect.left;
+	dy_ = rect.top;
 	if (Keyboard::isKeyPressed(Keyboard::A))
 	{
 		dx = -0.08;
@@ -22,16 +23,21 @@ void PLAYER::control(float time)
 	{
 		dx = 0.08;
 		last_viewed = true;
+		std::cout << dx_ << std::endl;
 	}
 	if (Keyboard::isKeyPressed(Keyboard::W))
 	{
-		if (onGround) { dy = -0.35; onGround = false; }
+		if (onGround) { dy = -0.30; onGround = false; }
 	}
 
 	update(time);
 
-	if (rect.left > 683) offsetX = rect.left - 683;
-	offsetY = rect.top - 659;
+	
+
+	offsetY = -70;
+	offsetX = -150;
+	//if (rect.left > 683) offsetX = rect.left - 583;
+	//offsetY = rect.top - 659;
 }
 
 void PLAYER::update(float time)
@@ -110,4 +116,9 @@ void PLAYER::Collision(int dir)
 			}
 
 		}
+}
+
+float PLAYER::getrect() const
+{
+	return dx_;
 }

@@ -5,6 +5,7 @@
 #include "Player_game.h"
 #include "loading_map.h"
 #include "PLAYER.h"
+#include "consoll_game.h"
 
 
 using namespace sf;
@@ -30,7 +31,9 @@ int main()
 
 	loading_map gameMap(textur_map);
 	Menu menu_game_main(menu_background);
-	PLAYER player_1(skin1, 1, 1, 32 ,32);
+	PLAYER player_1;
+	player_1.info_class(skin1, 1, 1, 32, 32);
+	consoll_game consoll;
 	Clock clock;
 	RectangleShape rectangle(Vector2f(tile, tile));
 
@@ -59,11 +62,15 @@ int main()
 		else if (current_scene == 2) {
 			player_1.control(time);
 
-			window.clear(Color::White);
 
+			window.clear(Color(33, 31, 48));
+			consoll.control();
 			gameMap.draw(window);
 
 			window.draw(player_1.getSprite());
+
+			
+			consoll.text_up(window);
 		}
 		//info
 		else if (current_scene == 3) {

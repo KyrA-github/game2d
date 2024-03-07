@@ -31,10 +31,7 @@ void consoll_game::control()
 
 void consoll_game::text_up(RenderWindow& window)
 {
-	pos = player.dx_;
-	std::cout << pos;
-	text = std::to_string(offsetX) + " " + std::to_string(offsetY) + " " + std::to_string(player.dx_)
-		+ " " + std::to_string(pos);
+	text = std::to_string(offsetX) + " " + std::to_string(offsetY);
 	
 	consoll_text.setFont(font);
 	consoll_text.setFillColor(Color::White);

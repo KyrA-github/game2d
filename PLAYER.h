@@ -9,15 +9,15 @@
 class PLAYER : public Entity
 {
 public:
+	void info_class(Texture& image, float X, float Y, int W, int H);
+	void control(float time);
+private:
 	float currentFrame, dx_, dy_;
 	int player_textur_w = 32;
 	int player_textur_h = 32;
 	bool last_viewed = false;
-
-	void info_class(Texture& image, float X, float Y, int W, int H);
-	void control(float time);
+	bool press_button_esc = true;
 	void update(float time);
 	void Collision(int dir);
-	float getrect() const;
 };
 

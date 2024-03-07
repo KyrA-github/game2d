@@ -2,7 +2,6 @@
 #include <iostream>
 #include "global.h"
 #include "Menu.h"
-#include "Player_game.h"
 #include "loading_map.h"
 #include "PLAYER.h"
 #include "consoll_game.h"
@@ -23,6 +22,7 @@ int current_scene = 1;
 int main()
 {
 	Texture skin1, textur_map, menu_background, menu_button_play;
+
 	skin1.loadFromFile("data_game/img/players_skin/s1/gab.png");
 	textur_map.loadFromFile("data_game/map/texture_map/texture.png");
 	menu_background.loadFromFile("data_game/img/menu/background/background1366-768.png");
@@ -32,11 +32,11 @@ int main()
 	loading_map gameMap(textur_map);
 	Menu menu_game_main(menu_background);
 	PLAYER player_1;
-	player_1.info_class(skin1, 1, 1, 32, 32);
 	consoll_game consoll;
 	Clock clock;
 	RectangleShape rectangle(Vector2f(tile, tile));
 
+	player_1.info_class(skin1, 1, 1, 32, 32);
 	gameMap.read_file();
 
 	while (window.isOpen())
@@ -52,6 +52,7 @@ int main()
 		while (window.pollEvent(event))
 		{
 			if (event.type == Event::Closed)
+
 				window.close();
 		}
 		//menu
@@ -80,9 +81,7 @@ int main()
 		else if (current_scene == 4) {
 			window.close();
 		}
-
 		window.display();
 	}
-
 	return 0;
 }

@@ -140,7 +140,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="PLAYER.cpp" />
-    <ClCompile Include="Player_game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data_game\map\map.json" />
@@ -153,7 +152,6 @@
     <ClInclude Include="loading_map.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="PLAYER.h" />
-    <ClInclude Include="Player_game.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

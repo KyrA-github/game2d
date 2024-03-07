@@ -49,8 +49,6 @@ void Menu::menu(RenderWindow& window)
     MainMenu[4].setCharacterSize(20);
     MainMenu[4].setPosition(0, 745);
 
-
-
     control(window);
     
     switch (menu_v)
@@ -93,33 +91,12 @@ void Menu::info(RenderWindow& window)
     MainMenu_info[2].setCharacterSize(20);
     MainMenu_info[2].setPosition(100, 650);
     
-
     control(window);
     draw_menu_info(window);
 }
 
 void Menu::levels(RenderWindow& window)
 {
-    //Levels[0].setFont(font);
-    //Levels[0].setFillColor(Color::Black);
-    //Levels[0].setString("Play");
-    //Levels[0].setCharacterSize(20);
-    //Levels[0].setPosition(300, 400);
-
-
-    //Vector2i mousePosition = Mouse::getPosition(window);
-
-
-   /* if (rect_play.contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-        if (Mouse::isButtonPressed(Mouse::Left) && press_button) {
-            std::cout << "Button Play Pressed!" << std::endl;
-            press_button = false;
-            current_scene = 3;
-        }
-        else if (!Mouse::isButtonPressed(Mouse::Left)) {
-            press_button = true;
-        }
-    }*/
 }
 
 void Menu::options(RenderWindow& window)

@@ -11,8 +11,7 @@ void PLAYER::info_class(Texture& image, float X, float Y, int W, int H)
 
 void PLAYER::control(float time)
 {
-	dx_ = rect.left;
-	dy_ = rect.top;
+	
 	if (Keyboard::isKeyPressed(Keyboard::A))
 	{
 		dx = -0.08;
@@ -23,11 +22,19 @@ void PLAYER::control(float time)
 	{
 		dx = 0.08;
 		last_viewed = true;
-		std::cout << dx_ << std::endl;
 	}
 	if (Keyboard::isKeyPressed(Keyboard::W))
 	{
 		if (onGround) { dy = -0.30; onGround = false; }
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::Escape) && press_button_esc)
+	{
+		press_button_esc = false;
+		current_scene = 1;
+	}
+	else if (!Keyboard::isKeyPressed(Keyboard::Escape)) {
+		press_button_esc = true;
 	}
 
 	update(time);
@@ -97,7 +104,6 @@ void PLAYER::update(float time)
 		}
 	}
 
-
 	sprite.setPosition(rect.left - offsetX, rect.top - offsetY);
 	dx = 0;
 }
@@ -116,9 +122,4 @@ void PLAYER::Collision(int dir)
 			}
 
 		}
-}
-
-float PLAYER::getrect() const
-{
-	return dx_;
 }

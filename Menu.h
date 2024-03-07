@@ -13,16 +13,6 @@ using namespace sf;
 class Menu
 {
 	public:
-
-		Sprite background_sprite, button_play;
-		FloatRect rect_play;
-		std::string version = "Version = Alpha 0.1";
-		bool press_button_w = true;
-		bool press_button_s = true;
-		bool press_button_enter = true;
-		int menu_v = 1;
-		
-
 		Menu(Texture& background_img);
 
 		void menu(RenderWindow& window);
@@ -34,6 +24,16 @@ class Menu
 		void control(RenderWindow& window);
 
 	private:
+
+		Sprite background_sprite, button_play;
+		FloatRect rect_play;
+		std::string version = "Version = Alpha 0.2";
+		bool press_button_w = true;
+		bool press_button_s = true;
+		bool press_button_enter = true;
+		int menu_v = 1;
+
+
 		Font font;
 		Font font_info;
 		Text MainMenu[max_text];

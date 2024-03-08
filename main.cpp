@@ -4,6 +4,7 @@
 #include "Menu.h"
 #include "loading_map.h"
 #include "PLAYER.h"
+#include "enemy.h"
 #include "consoll_game.h"
 
 
@@ -32,11 +33,13 @@ int main()
 	loading_map gameMap(textur_map);
 	Menu menu_game_main(menu_background);
 	PLAYER player_1;
+	//enemy enemy_1;
 	consoll_game consoll;
 	Clock clock;
 	RectangleShape rectangle(Vector2f(tile, tile));
 
 	player_1.info_class(skin1, 1, 1, 32, 32);
+	//enemy_1.info_class(skin1, 1, 1, 32, 32);
 	gameMap.read_file();
 
 	while (window.isOpen())
@@ -63,14 +66,14 @@ int main()
 		else if (current_scene == 2) {
 			player_1.control(time);
 
-
 			window.clear(Color(33, 31, 48));
+
 			consoll.control();
+
 			gameMap.draw(window);
 
 			window.draw(player_1.getSprite());
 
-			
 			consoll.text_up(window);
 		}
 		//info

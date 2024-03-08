@@ -1,12 +1,49 @@
 #include "enemy.h"
 
-enemy::enemy(Texture& image)
+void enemy::info_class(Texture& image, float X, float Y, int W, int H)
 {
-	sprite.setTexture(image);
-	rect = FloatRect(7 * 32, 9 * 32, 32, 32);
+	info(image, X, Y, W, H);
 
+	rect = FloatRect(7 * H, 9 * W, H, W);
 	dx = dy = 0.1;
 	currentFrame = 0;
+}
+
+void enemy::control(float time)
+{
+	if (enemy_walk_) {
+		if (enemy_walk < 10000) {
+			enemy_walk++;
+			dx = -0.08;
+			last_viewed = true;
+		}
+		else
+		{
+			enemy_walk_ = false;
+		}
+	
+	}
+	else if(!enemy_walk_)
+	{
+		if (enemy_walk != 0) {
+			enemy_walk--;
+			dx = 0.08;
+			last_viewed = false;
+		}
+		else
+		{
+			enemy_walk_ = true;
+		}
+	}
+
+	update(time);
+
+
+
+	//offsetY = -70;
+	//offsetX = -150;
+	//if (rect.left > 683) offsetX = rect.left - 583;
+	//offsetY = rect.top - 659;
 }
 
 void enemy::update(float time)
@@ -66,7 +103,6 @@ void enemy::update(float time)
 		}
 	}
 
-
 	sprite.setPosition(rect.left - offsetX, rect.top - offsetY);
 	dx = 0;
 }
@@ -86,7 +122,3 @@ void enemy::Collision(int dir)
 
 		}
 }
-
-
-
-
